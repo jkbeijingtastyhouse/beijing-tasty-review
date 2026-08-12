@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beijing Tasty House | Share Your Experience</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f7f5f1;
+  color: #222;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  width: min(92%, 560px);
+  margin: auto;
+  padding: 42px 0 60px;
+}
+
+.brand {
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.brand h1 {
+  font-size: 24px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.brand p {
+  color: #777;
+  font-size: 14px;
+}
+
+.card {
+  background: white;
+  padding: 28px 22px;
+  border-radius: 18px;
+  box-shadow: 0 5px 25px rgba(0,0,0,.06);
+}
+
+h2 {
+  font-size: 25px;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #777;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.question {
+  font-weight: 600;
+  margin: 25px 0 12px;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.option {
+  border: 1px solid #d6d1c8;
+  background: #fff;
+  border-radius: 30px;
+  padding: 11px 16px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.option.selected {
+  background: #222;
+  color: white;
+  border-color: #222;
+}
+
+textarea {
+  width: 100%;
+  min-height: 90px;
+  margin-top: 10px;
+  padding: 13px;
+  border-radius: 12px;
+  border: 1px solid #d6d1c8;
+  font-size: 15px;
+  resize: vertical;
+}
+
+.primary {
+  width: 100%;
+  margin-top: 25px;
+  border: none;
+  border-radius: 30px;
+  background: #222;
+  color: white;
+  padding: 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.result {
+  display: none;
+  margin-top: 28px;
+  padding-top: 25px;
+  border-top: 1px solid #eee;
+}
+
+.review-box {
+  background: #f7f5f1;
+  border-radius: 14px;
+  padding: 18px;
+  line-height: 1.65;
+  margin: 15px 0;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.secondary {
+  padding: 13px;
+  border-radius: 25px;
+  border: 1px solid #222;
+  background: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.google {
+  width: 100%;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  background: #222;
+  color: white;
+  padding: 15px;
+  border-radius: 30px;
+  margin-top: 12px;
+  font-size: 16px;
+}
+
+.note {
+  text-align: center;
+  color: #999;
+  font-size: 12px;
+  margin-top: 22px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="brand">
+    <h1>BEIJING TASTY HOUSE</h1>
+    <p>Thank you for dining with us.</p>
+  </div>
+
+  <div class="card">
+
+    <h2>How was your experience?</h2>
+    <div class="subtitle">
+      Choose the highlights that reflect your visit and we'll help you put them into words.
+    </div>
+
+    <div class="question">What stood out?</div>
+
+    <div class="options">
+      <button class="option" data-value="food">Food</button>
+      <button class="option" data-value="service">Service</button>
+      <button class="option" data-value="atmosphere">Atmosphere</button>
+      <button class="option" data-value="value">Value</button>
+    </div>
+
+    <div class="question">What did you enjoy?</div>
+
+    <div class="options">
+      <button class="option" data-value="duck">Peking Duck</button>
+      <button class="option" data-value="dishes">Other Dishes</button>
+      <button class="option" data-value="portions">Generous Portions</button>
+      <button class="option" data-value="staff">Friendly Staff</button>
+    </div>
+
+    <div class="question">Anything else you'd like to mention?</div>
+
+    <textarea id="customText"
+      placeholder="Optional — add something about your experience"></textarea>
+
+    <button class="primary" onclick="generateReview()">
+      Create My Review →
+    </button>
+
+    <div class="result" id="result">
+
+      <div class="question">Your review</div>
+
+      <div class="review-box" id="reviewText"></div>
+
+      <div class="actions">
+        <button class="secondary" onclick="copyReview()">
+          Copy Review
+        </button>
+
+        <button class="secondary" onclick="generateReview()">
+          ↻ Try Another
+        </button>
+      </div>
+
+      <a class="google"
+         href="https://g.page/r/CYMVPBGbFmkyEBM/review"
+         target="_blank">
+        Continue to Google →
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="note">
+    Your review is always your choice. Feel free to edit the suggested wording before posting.
+  </div>
+
+</div>
+
+<script>
+
+const selected = new Set();
+
+document.querySelectorAll(".option").forEach(button => {
+  button.addEventListener("click", () => {
+    button.classList.toggle("selected");
+
+    if (button.classList.contains("selected")) {
+      selected.add(button.dataset.value);
+    } else {
+      selected.delete(button.dataset.value);
+    }
+  });
+});
+
+const openings = [
+  "We had a really enjoyable experience at Beijing Tasty House.",
+  "Really enjoyed our visit to Beijing Tasty House.",
+  "We had a great meal here and really enjoyed the experience.",
+  "We came in for a meal and had a wonderful time.",
+  "We really enjoyed dining at Beijing Tasty House."
+];
+
+const phrases = {
+
+  food: [
+    "The food was flavorful and well prepared.",
+    "Everything we tried was delicious.",
+    "The food was fresh, flavorful, and satisfying.",
+    "We really enjoyed the quality of the food."
+  ],
+
+  service: [
+    "The service was attentive and welcoming.",
+    "Service was friendly and made the meal even more enjoyable.",
+    "We were very happy with the service throughout our meal.",
+    "The service was warm and attentive."
+  ],
+
+  atmosphere: [
+    "The restaurant had a comfortable and inviting atmosphere.",
+    "We also really enjoyed the atmosphere.",
+    "The dining room felt comfortable and welcoming.",
+    "The atmosphere made the meal especially enjoyable."
+  ],
+
+  value: [
+    "We felt the overall experience was a good value.",
+    "The portions and quality made the meal feel well worth it.",
+    "We were happy with the value for the overall experience."
+  ],
+
+  duck: [
+    "The Peking duck was one of the highlights of our meal.",
+    "We especially enjoyed the Peking duck.",
+    "The Peking duck was flavorful and memorable.",
+    "The duck was definitely a standout for us."
+  ],
+
+  dishes: [
+    "We enjoyed trying several dishes and everything came together nicely.",
+    "The other dishes we ordered were also very enjoyable.",
+    "We tried several dishes and were happy with everything we ordered."
+  ],
+
+  portions: [
+    "The portions were generous and satisfying.",
+    "We were pleasantly surprised by the generous portions.",
+    "The portion sizes were great for sharing."
+  ],
+
+  staff: [
+    "The staff was friendly and helpful.",
+    "Everyone we interacted with was welcoming and attentive.",
+    "The staff made us feel very welcome.",
+    "The team was friendly throughout our visit."
+  ]
+};
+
+const endings = [
+  "We'd be happy to come back again.",
+  "Overall, we had a very enjoyable meal.",
+  "We look forward to visiting again.",
+  "It was a really nice dining experience.",
+  "We'd definitely consider coming back."
+];
+
+function randomItem(array) {
+  return array[Math.floor(Math.random() * array.length)];
+}
+
+function generateReview() {
+
+  if (selected.size === 0 &&
+      document.getElementById("customText").value.trim() === "") {
+    alert("Please select at least one highlight from your visit.");
+    return;
+  }
+
+  let parts = [];
+
+  parts.push(randomItem(openings));
+
+  selected.forEach(item => {
+    if (phrases[item]) {
+      parts.push(randomItem(phrases[item]));
+    }
+  });
+
+  const custom = document.getElementById("customText").value.trim();
+
+  if (custom) {
+    parts.push(custom);
+  }
+
+  parts.push(randomItem(endings));
+
+  document.getElementById("reviewText").innerText = parts.join(" ");
+  document.getElementById("result").style.display = "block";
+
+  document.getElementById("result").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function copyReview() {
+
+  const text = document.getElementById("reviewText").innerText;
+
+  navigator.clipboard.writeText(text).then(() => {
+    const button = event.target;
+    const original = button.innerText;
+
+    button.innerText = "Copied ✓";
+
+    setTimeout(() => {
+      button.innerText = original;
+    }, 1800);
+  });
+}
+
+</script>
+
+</body>
+</html>
