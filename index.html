@@ -1,383 +1,904 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Beijing Tasty House | Share Your Experience</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-* {
-  box-sizing: border-box;
-}
+  <title>Beijing Tasty House | Share Your Experience</title>
 
-body {
-  margin: 0;
-  background: #f7f5f1;
-  color: #222;
-  font-family: Arial, Helvetica, sans-serif;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-.container {
-  width: min(92%, 560px);
-  margin: auto;
-  padding: 42px 0 60px;
-}
+    body {
+      margin: 0;
+      background: #f7f5f1;
+      color: #222;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-.brand {
-  text-align: center;
-  margin-bottom: 38px;
-}
+    .container {
+      width: min(92%, 560px);
+      margin: auto;
+      padding: 42px 0 60px;
+    }
 
-.brand h1 {
-  font-size: 24px;
-  letter-spacing: 2px;
-  margin-bottom: 8px;
-}
+    /* BRAND */
 
-.brand p {
-  color: #777;
-  font-size: 14px;
-}
+    .brand {
+      text-align: center;
+      margin-bottom: 34px;
+    }
 
-.card {
-  background: white;
-  padding: 28px 22px;
-  border-radius: 18px;
-  box-shadow: 0 5px 25px rgba(0,0,0,.06);
-}
+    .brand h1 {
+      font-size: 24px;
+      letter-spacing: 2px;
+      margin: 0 0 8px;
+    }
 
-h2 {
-  font-size: 25px;
-  margin-top: 0;
-  margin-bottom: 8px;
-}
+    .brand p {
+      color: #777;
+      font-size: 14px;
+      margin: 0;
+    }
 
-.subtitle {
-  color: #777;
-  line-height: 1.5;
-  margin-bottom: 25px;
-}
+    /* MAIN CARD */
 
-.question {
-  font-weight: 600;
-  margin: 25px 0 12px;
-}
+    .card {
+      background: #ffffff;
+      padding: 28px 22px;
+      border-radius: 18px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+    }
 
-.options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
+    h2 {
+      font-size: 25px;
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
 
-.option {
-  border: 1px solid #d6d1c8;
-  background: #fff;
-  border-radius: 30px;
-  padding: 11px 16px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: .2s;
-}
+    .subtitle {
+      color: #777;
+      line-height: 1.55;
+      margin-bottom: 28px;
+      font-size: 15px;
+    }
 
-.option.selected {
-  background: #222;
-  color: white;
-  border-color: #222;
-}
+    /* QUESTIONS */
 
-textarea {
-  width: 100%;
-  min-height: 90px;
-  margin-top: 10px;
-  padding: 13px;
-  border-radius: 12px;
-  border: 1px solid #d6d1c8;
-  font-size: 15px;
-  resize: vertical;
-}
+    .question {
+      font-weight: 600;
+      margin: 26px 0 12px;
+      font-size: 16px;
+    }
 
-.primary {
-  width: 100%;
-  margin-top: 25px;
-  border: none;
-  border-radius: 30px;
-  background: #222;
-  color: white;
-  padding: 15px;
-  font-size: 16px;
-  cursor: pointer;
-}
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
-.result {
-  display: none;
-  margin-top: 28px;
-  padding-top: 25px;
-  border-top: 1px solid #eee;
-}
+    .option {
+      border: 1px solid #d6d1c8;
+      background: #ffffff;
+      color: #222;
+      border-radius: 30px;
+      padding: 11px 16px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
 
-.review-box {
-  background: #f7f5f1;
-  border-radius: 14px;
-  padding: 18px;
-  line-height: 1.65;
-  margin: 15px 0;
-}
+    .option:hover {
+      border-color: #888;
+    }
 
-.actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
+    .option.selected {
+      background: #222;
+      color: white;
+      border-color: #222;
+    }
 
-.secondary {
-  padding: 13px;
-  border-radius: 25px;
-  border: 1px solid #222;
-  background: white;
-  font-size: 14px;
-  cursor: pointer;
-}
+    /* TEXT AREA */
 
-.google {
-  width: 100%;
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  background: #222;
-  color: white;
-  padding: 15px;
-  border-radius: 30px;
-  margin-top: 12px;
-  font-size: 16px;
-}
+    textarea {
+      width: 100%;
+      min-height: 95px;
+      margin-top: 10px;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid #d6d1c8;
+      font-size: 15px;
+      font-family: inherit;
+      resize: vertical;
+      outline: none;
+    }
 
-.note {
-  text-align: center;
-  color: #999;
-  font-size: 12px;
-  margin-top: 22px;
-}
-</style>
+    textarea:focus {
+      border-color: #777;
+    }
+
+    /* MAIN BUTTON */
+
+    .primary {
+      width: 100%;
+      margin-top: 26px;
+      border: none;
+      border-radius: 30px;
+      background: #222;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .primary:hover {
+      opacity: 0.9;
+    }
+
+    /* RESULT AREA */
+
+    .result {
+      display: none;
+      margin-top: 30px;
+      padding-top: 28px;
+      border-top: 1px solid #eee;
+    }
+
+    .review-box {
+      background: #f7f5f1;
+      border-radius: 14px;
+      padding: 18px;
+      line-height: 1.7;
+      margin: 15px 0;
+      font-size: 15px;
+    }
+
+    /* COPY / TRY AGAIN */
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .secondary {
+      padding: 13px 10px;
+      border-radius: 25px;
+      border: 1px solid #222;
+      background: white;
+      color: #222;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .secondary:hover {
+      background: #f5f5f5;
+    }
+
+    /* PLATFORM SECTION */
+
+    .platform-title {
+      text-align: center;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #555;
+    }
+
+    .platform-buttons {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .platform-button {
+      width: 100%;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      padding: 15px;
+      border-radius: 30px;
+      font-size: 16px;
+      transition: 0.2s ease;
+    }
+
+    .google {
+      background: #222;
+      color: white;
+      border: 1px solid #222;
+    }
+
+    .google:hover {
+      opacity: 0.9;
+    }
+
+    .yelp {
+      background: white;
+      color: #222;
+      border: 1px solid #222;
+    }
+
+    .yelp:hover {
+      background: #f5f5f5;
+    }
+
+    /* FOOTNOTE */
+
+    .note {
+      text-align: center;
+      color: #999;
+      font-size: 12px;
+      line-height: 1.5;
+      margin-top: 22px;
+      padding: 0 8px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 480px) {
+
+      .container {
+        width: 94%;
+        padding-top: 25px;
+      }
+
+      .card {
+        padding: 24px 18px;
+      }
+
+      .brand {
+        margin-bottom: 24px;
+      }
+
+      .brand h1 {
+        font-size: 21px;
+      }
+
+      h2 {
+        font-size: 23px;
+      }
+
+      .option {
+        padding: 10px 14px;
+        font-size: 14px;
+      }
+
+      .actions {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+
 </head>
+
 
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <div class="brand">
-    <h1>BEIJING TASTY HOUSE</h1>
-    <p>Thank you for dining with us.</p>
-  </div>
+    <!-- BRAND -->
 
-  <div class="card">
-
-    <h2>How was your experience?</h2>
-    <div class="subtitle">
-      Choose the highlights that reflect your visit and we'll help you put them into words.
+    <div class="brand">
+      <h1>BEIJING TASTY HOUSE</h1>
+      <p>Thank you for dining with us.</p>
     </div>
 
-    <div class="question">What stood out?</div>
 
-    <div class="options">
-      <button class="option" data-value="food">Food</button>
-      <button class="option" data-value="service">Service</button>
-      <button class="option" data-value="atmosphere">Atmosphere</button>
-      <button class="option" data-value="value">Value</button>
-    </div>
+    <!-- MAIN CARD -->
 
-    <div class="question">What did you enjoy?</div>
+    <div class="card">
 
-    <div class="options">
-      <button class="option" data-value="duck">Peking Duck</button>
-      <button class="option" data-value="dishes">Other Dishes</button>
-      <button class="option" data-value="portions">Generous Portions</button>
-      <button class="option" data-value="staff">Friendly Staff</button>
-    </div>
+      <h2>How was your experience?</h2>
 
-    <div class="question">Anything else you'd like to mention?</div>
-
-    <textarea id="customText"
-      placeholder="Optional — add something about your experience"></textarea>
-
-    <button class="primary" onclick="generateReview()">
-      Create My Review →
-    </button>
-
-    <div class="result" id="result">
-
-      <div class="question">Your review</div>
-
-      <div class="review-box" id="reviewText"></div>
-
-      <div class="actions">
-        <button class="secondary" onclick="copyReview()">
-          Copy Review
-        </button>
-
-        <button class="secondary" onclick="generateReview()">
-          ↻ Try Another
-        </button>
+      <div class="subtitle">
+        Choose the highlights that reflect your visit and we'll help you put them into words.
       </div>
 
-      <a class="google"
-         href="https://g.page/r/CYMVPBGbFmkyEBM/review"
-         target="_blank">
-        Continue to Google →
-      </a>
 
+      <!-- QUESTION 1 -->
+
+      <div class="question">
+        What stood out during your visit?
+      </div>
+
+      <div class="options">
+
+        <button class="option" data-value="food">
+          Food Quality
+        </button>
+
+        <button class="option" data-value="service">
+          Service
+        </button>
+
+        <button class="option" data-value="atmosphere">
+          Atmosphere
+        </button>
+
+        <button class="option" data-value="value">
+          Value
+        </button>
+
+        <button class="option" data-value="cleanliness">
+          Cleanliness
+        </button>
+
+      </div>
+
+
+      <!-- QUESTION 2 -->
+
+      <div class="question">
+        What did you enjoy most?
+      </div>
+
+      <div class="options">
+
+        <button class="option" data-value="duck">
+          Peking Duck
+        </button>
+
+        <button class="option" data-value="dishes">
+          Other Dishes
+        </button>
+
+        <button class="option" data-value="portions">
+          Generous Portions
+        </button>
+
+        <button class="option" data-value="staff">
+          Friendly Staff
+        </button>
+
+        <button class="option" data-value="authentic">
+          Authentic Flavors
+        </button>
+
+      </div>
+
+
+      <!-- QUESTION 3 -->
+
+      <div class="question">
+        Anything else you'd like to mention?
+      </div>
+
+      <textarea
+        id="customText"
+        placeholder="Optional — add something about your experience"
+      ></textarea>
+
+
+      <!-- GENERATE -->
+
+      <button class="primary" onclick="generateReview()">
+        Create My Review →
+      </button>
+
+
+      <!-- RESULT -->
+
+      <div class="result" id="result">
+
+        <div class="question">
+          Your review
+        </div>
+
+        <div class="review-box" id="reviewText"></div>
+
+
+        <!-- COPY / TRY AGAIN -->
+
+        <div class="actions">
+
+          <button
+            class="secondary"
+            id="copyButton"
+            onclick="copyReview()"
+          >
+            Copy Review
+          </button>
+
+          <button
+            class="secondary"
+            onclick="generateReview()"
+          >
+            ↻ Try Another
+          </button>
+
+        </div>
+
+
+        <!-- PLATFORM -->
+
+        <div class="platform-title">
+          Choose where you'd like to continue
+        </div>
+
+        <div class="platform-buttons">
+
+          <a
+            class="platform-button google"
+            href="https://g.page/r/CYMVPBGbFmkyEBM/review"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Continue to Google →
+          </a>
+
+          <a
+            class="platform-button yelp"
+            href="https://www.yelp.com/writeareview/biz/lFPqLADDpgdNyyanKczQ1g?return_url=%2Fbiz%2FlFPqLADDpgdNyyanKczQ1g&review_origin=biz-details-war-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit us on Yelp →
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- NOTE -->
+
+    <div class="note">
+      Your review is always your choice. Feel free to edit the suggested wording before posting.
     </div>
 
   </div>
 
-  <div class="note">
-    Your review is always your choice. Feel free to edit the suggested wording before posting.
-  </div>
 
-</div>
 
-<script>
+  <script>
 
-const selected = new Set();
+    /* -----------------------------
+       SELECTED OPTIONS
+    ----------------------------- */
 
-document.querySelectorAll(".option").forEach(button => {
-  button.addEventListener("click", () => {
-    button.classList.toggle("selected");
+    const selected = new Set();
 
-    if (button.classList.contains("selected")) {
-      selected.add(button.dataset.value);
-    } else {
-      selected.delete(button.dataset.value);
+    document.querySelectorAll(".option").forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        button.classList.toggle("selected");
+
+        const value = button.dataset.value;
+
+        if (button.classList.contains("selected")) {
+          selected.add(value);
+        } else {
+          selected.delete(value);
+        }
+
+      });
+
+    });
+
+
+
+    /* -----------------------------
+       OPENING SENTENCES
+    ----------------------------- */
+
+    const openings = [
+
+      "We had a really enjoyable experience at Beijing Tasty House.",
+
+      "Really enjoyed our visit to Beijing Tasty House.",
+
+      "We had a great meal here and really enjoyed the experience.",
+
+      "We came in for a meal and had a wonderful time.",
+
+      "We really enjoyed dining at Beijing Tasty House.",
+
+      "We had a very nice dining experience here.",
+
+      "Had a great visit to Beijing Tasty House and really enjoyed our meal.",
+
+      "We stopped by for a meal and had a really pleasant experience."
+
+    ];
+
+
+
+    /* -----------------------------
+       REVIEW PHRASES
+    ----------------------------- */
+
+    const phrases = {
+
+
+      /* FOOD QUALITY */
+
+      food: [
+
+        "The food was flavorful and well prepared.",
+
+        "Everything we tried was delicious.",
+
+        "The food was fresh, flavorful, and satisfying.",
+
+        "We really enjoyed the quality of the food.",
+
+        "The dishes were flavorful and nicely prepared."
+
+      ],
+
+
+      /* SERVICE */
+
+      service: [
+
+        "The service was attentive and welcoming.",
+
+        "Service was friendly and made the meal even more enjoyable.",
+
+        "We were very happy with the service throughout our meal.",
+
+        "The service was warm and attentive.",
+
+        "We felt well taken care of throughout our visit."
+
+      ],
+
+
+      /* ATMOSPHERE */
+
+      atmosphere: [
+
+        "The restaurant had a comfortable and inviting atmosphere.",
+
+        "We also really enjoyed the atmosphere.",
+
+        "The dining room felt comfortable and welcoming.",
+
+        "The atmosphere made the meal especially enjoyable.",
+
+        "The restaurant had a pleasant and relaxed atmosphere."
+
+      ],
+
+
+      /* VALUE */
+
+      value: [
+
+        "We felt the overall experience was a good value.",
+
+        "The portions and quality made the meal feel well worth it.",
+
+        "We were happy with the value for the overall experience.",
+
+        "The quality and portions made the meal feel like a good value."
+
+      ],
+
+
+      /* CLEANLINESS */
+
+      cleanliness: [
+
+        "The restaurant was clean and well maintained.",
+
+        "We appreciated how clean and comfortable the restaurant felt.",
+
+        "The dining area was clean and pleasant.",
+
+        "Everything felt clean and well cared for.",
+
+        "The restaurant felt clean, organized, and comfortable."
+
+      ],
+
+
+      /* PEKING DUCK */
+
+      duck: [
+
+        "The Peking duck was one of the highlights of our meal.",
+
+        "We especially enjoyed the Peking duck.",
+
+        "The Peking duck was flavorful and memorable.",
+
+        "The duck was definitely a standout for us.",
+
+        "The Peking duck was a highlight and something we'd order again."
+
+      ],
+
+
+      /* OTHER DISHES */
+
+      dishes: [
+
+        "We enjoyed trying several dishes and everything came together nicely.",
+
+        "The other dishes we ordered were also very enjoyable.",
+
+        "We tried several dishes and were happy with everything we ordered.",
+
+        "There were plenty of enjoyable dishes to share at the table.",
+
+        "We enjoyed the variety of dishes we ordered."
+
+      ],
+
+
+      /* PORTIONS */
+
+      portions: [
+
+        "The portions were generous and satisfying.",
+
+        "We were pleasantly surprised by the generous portions.",
+
+        "The portion sizes were great for sharing.",
+
+        "The dishes came in generous portions that worked well for our table.",
+
+        "The portion sizes were very satisfying."
+
+      ],
+
+
+      /* FRIENDLY STAFF */
+
+      staff: [
+
+        "The staff was friendly and helpful.",
+
+        "Everyone we interacted with was welcoming and attentive.",
+
+        "The staff made us feel very welcome.",
+
+        "The team was friendly throughout our visit.",
+
+        "Everyone on the team was friendly and helpful."
+
+      ],
+
+
+      /* AUTHENTIC FLAVORS */
+
+      authentic: [
+
+        "The flavors felt authentic and well balanced.",
+
+        "We really enjoyed the authentic flavors throughout the meal.",
+
+        "The food had a very authentic and satisfying flavor.",
+
+        "The dishes had the kind of authentic flavors we were hoping for.",
+
+        "We appreciated the traditional flavors in the dishes we tried."
+
+      ]
+
+    };
+
+
+
+    /* -----------------------------
+       ENDINGS
+    ----------------------------- */
+
+    const endings = [
+
+      "We'd be happy to come back again.",
+
+      "Overall, we had a very enjoyable meal.",
+
+      "We look forward to visiting again.",
+
+      "It was a really nice dining experience.",
+
+      "We'd definitely consider coming back.",
+
+      "Overall, it was a very enjoyable visit.",
+
+      "We had a great time and would be happy to return."
+
+    ];
+
+
+
+    /* -----------------------------
+       RANDOM HELPER
+    ----------------------------- */
+
+    function randomItem(array) {
+
+      return array[
+        Math.floor(Math.random() * array.length)
+      ];
+
     }
-  });
-});
 
-const openings = [
-  "We had a really enjoyable experience at Beijing Tasty House.",
-  "Really enjoyed our visit to Beijing Tasty House.",
-  "We had a great meal here and really enjoyed the experience.",
-  "We came in for a meal and had a wonderful time.",
-  "We really enjoyed dining at Beijing Tasty House."
-];
 
-const phrases = {
 
-  food: [
-    "The food was flavorful and well prepared.",
-    "Everything we tried was delicious.",
-    "The food was fresh, flavorful, and satisfying.",
-    "We really enjoyed the quality of the food."
-  ],
+    /* -----------------------------
+       GENERATE REVIEW
+    ----------------------------- */
 
-  service: [
-    "The service was attentive and welcoming.",
-    "Service was friendly and made the meal even more enjoyable.",
-    "We were very happy with the service throughout our meal.",
-    "The service was warm and attentive."
-  ],
+    function generateReview() {
 
-  atmosphere: [
-    "The restaurant had a comfortable and inviting atmosphere.",
-    "We also really enjoyed the atmosphere.",
-    "The dining room felt comfortable and welcoming.",
-    "The atmosphere made the meal especially enjoyable."
-  ],
+      const custom =
+        document
+          .getElementById("customText")
+          .value
+          .trim();
 
-  value: [
-    "We felt the overall experience was a good value.",
-    "The portions and quality made the meal feel well worth it.",
-    "We were happy with the value for the overall experience."
-  ],
 
-  duck: [
-    "The Peking duck was one of the highlights of our meal.",
-    "We especially enjoyed the Peking duck.",
-    "The Peking duck was flavorful and memorable.",
-    "The duck was definitely a standout for us."
-  ],
+      /* Must select something or type something */
 
-  dishes: [
-    "We enjoyed trying several dishes and everything came together nicely.",
-    "The other dishes we ordered were also very enjoyable.",
-    "We tried several dishes and were happy with everything we ordered."
-  ],
+      if (
+        selected.size === 0 &&
+        custom === ""
+      ) {
 
-  portions: [
-    "The portions were generous and satisfying.",
-    "We were pleasantly surprised by the generous portions.",
-    "The portion sizes were great for sharing."
-  ],
+        alert(
+          "Please select at least one highlight from your visit."
+        );
 
-  staff: [
-    "The staff was friendly and helpful.",
-    "Everyone we interacted with was welcoming and attentive.",
-    "The staff made us feel very welcome.",
-    "The team was friendly throughout our visit."
-  ]
-};
+        return;
 
-const endings = [
-  "We'd be happy to come back again.",
-  "Overall, we had a very enjoyable meal.",
-  "We look forward to visiting again.",
-  "It was a really nice dining experience.",
-  "We'd definitely consider coming back."
-];
+      }
 
-function randomItem(array) {
-  return array[Math.floor(Math.random() * array.length)];
-}
 
-function generateReview() {
+      let parts = [];
 
-  if (selected.size === 0 &&
-      document.getElementById("customText").value.trim() === "") {
-    alert("Please select at least one highlight from your visit.");
-    return;
-  }
 
-  let parts = [];
+      /* Opening */
 
-  parts.push(randomItem(openings));
+      parts.push(
+        randomItem(openings)
+      );
 
-  selected.forEach(item => {
-    if (phrases[item]) {
-      parts.push(randomItem(phrases[item]));
+
+      /* Selected options */
+
+      selected.forEach(item => {
+
+        if (phrases[item]) {
+
+          parts.push(
+            randomItem(phrases[item])
+          );
+
+        }
+
+      });
+
+
+      /* Custom customer comment */
+
+      if (custom) {
+
+        parts.push(custom);
+
+      }
+
+
+      /* Ending */
+
+      parts.push(
+        randomItem(endings)
+      );
+
+
+      /* Display */
+
+      document
+        .getElementById("reviewText")
+        .innerText =
+        parts.join(" ");
+
+
+      document
+        .getElementById("result")
+        .style.display =
+        "block";
+
+
+      /* Reset copy button */
+
+      document
+        .getElementById("copyButton")
+        .innerText =
+        "Copy Review";
+
+
+      /* Scroll to result */
+
+      document
+        .getElementById("result")
+        .scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
     }
-  });
 
-  const custom = document.getElementById("customText").value.trim();
 
-  if (custom) {
-    parts.push(custom);
-  }
 
-  parts.push(randomItem(endings));
+    /* -----------------------------
+       COPY REVIEW
+    ----------------------------- */
 
-  document.getElementById("reviewText").innerText = parts.join(" ");
-  document.getElementById("result").style.display = "block";
+    async function copyReview() {
 
-  document.getElementById("result").scrollIntoView({
-    behavior: "smooth"
-  });
-}
+      const text =
+        document
+          .getElementById("reviewText")
+          .innerText;
 
-function copyReview() {
 
-  const text = document.getElementById("reviewText").innerText;
+      const button =
+        document
+          .getElementById("copyButton");
 
-  navigator.clipboard.writeText(text).then(() => {
-    const button = event.target;
-    const original = button.innerText;
 
-    button.innerText = "Copied ✓";
+      try {
 
-    setTimeout(() => {
-      button.innerText = original;
-    }, 1800);
-  });
-}
+        await navigator.clipboard.writeText(text);
 
-</script>
+        button.innerText =
+          "Copied ✓";
+
+
+        setTimeout(() => {
+
+          button.innerText =
+            "Copy Review";
+
+        }, 1800);
+
+
+      } catch (error) {
+
+        /* Backup method for older browsers */
+
+        const textarea =
+          document.createElement("textarea");
+
+        textarea.value = text;
+
+        document.body.appendChild(textarea);
+
+        textarea.select();
+
+        document.execCommand("copy");
+
+        document.body.removeChild(textarea);
+
+
+        button.innerText =
+          "Copied ✓";
+
+
+        setTimeout(() => {
+
+          button.innerText =
+            "Copy Review";
+
+        }, 1800);
+
+      }
+
+    }
+
+  </script>
 
 </body>
+
 </html>
