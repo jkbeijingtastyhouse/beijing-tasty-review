@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <title>Beijing Tasty House | Share Your Experience</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -24,51 +26,65 @@
       padding: 18px 0 60px;
     }
 
+
     /* =========================
        HERO
     ========================= */
 
     .hero {
       position: relative;
+
       height: 210px;
+
       border-radius: 20px;
+
       overflow: hidden;
 
       background:
-        linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.12)),
+        linear-gradient(
+          rgba(0, 0, 0, 0.08),
+          rgba(0, 0, 0, 0.08)
+        ),
         url("restaurant.jpg");
 
       background-size: cover;
+
       background-position: center;
 
       margin-bottom: 18px;
 
       box-shadow:
-        0 5px 22px rgba(0,0,0,.08);
+        0 5px 22px rgba(0, 0, 0, 0.08);
     }
+
 
     /*
       LOGO
-      Smaller + positioned on the left
+      Positioned inside the
+      upper-left wall area.
     */
 
     .hero-logo {
       position: absolute;
 
-      width: 105px;
-      max-height: 150px;
+      width: 90px;
+
+      max-height: 125px;
 
       object-fit: contain;
 
-      left: 28px;
-      top: 22px;
+      left: 8px;
+
+      top: 8px;
 
       transform: none;
 
-      filter:
-        drop-shadow(0 2px 5px rgba(255,255,255,.65));
-
       z-index: 2;
+
+      filter:
+        drop-shadow(
+          0 2px 4px rgba(255,255,255,.40)
+        );
     }
 
 
@@ -89,6 +105,7 @@
 
     h2 {
       font-size: 26px;
+
       margin: 0 0 8px;
     }
 
@@ -141,6 +158,10 @@
       transition: .2s ease;
     }
 
+    .option:hover {
+      border-color: #999;
+    }
+
     .option.selected {
       background: #222;
 
@@ -151,7 +172,7 @@
 
 
     /* =========================
-       TEXT AREA
+       OPTIONAL TEXT
     ========================= */
 
     textarea {
@@ -172,11 +193,17 @@
       font-family: inherit;
 
       resize: vertical;
+
+      outline: none;
+    }
+
+    textarea:focus {
+      border-color: #999;
     }
 
 
     /* =========================
-       PRIMARY BUTTON
+       MAIN BUTTON
     ========================= */
 
     .primary {
@@ -197,6 +224,10 @@
       font-size: 16px;
 
       cursor: pointer;
+    }
+
+    .primary:hover {
+      opacity: .9;
     }
 
 
@@ -242,7 +273,7 @@
 
 
     /* =========================
-       COPY / TRY AGAIN
+       COPY / TRY ANOTHER
     ========================= */
 
     .actions {
@@ -271,7 +302,7 @@
 
 
     /* =========================
-       REVIEW PLATFORMS
+       GOOGLE / YELP
     ========================= */
 
     .platform-title {
@@ -368,19 +399,20 @@
         background-position: center;
       }
 
+
       /*
-        MOBILE LOGO
-        Smaller and kept on left wall
+        Logo inside the red-box
+        style upper-left area.
       */
 
       .hero-logo {
-        width: 95px;
+        width: 82px;
 
-        max-height: 135px;
+        max-height: 115px;
 
-        left: 22px;
+        left: 7px;
 
-        top: 20px;
+        top: 7px;
 
         transform: none;
       }
@@ -398,9 +430,11 @@
 
         font-size: 14px;
       }
+
     }
 
   </style>
+
 </head>
 
 
@@ -409,9 +443,9 @@
   <div class="container">
 
 
-    <!-- =====================
-         HERO IMAGE
-    ====================== -->
+    <!-- =========================
+         HERO
+    ========================== -->
 
     <div class="hero">
 
@@ -425,9 +459,9 @@
 
 
 
-    <!-- =====================
-         MAIN FORM
-    ====================== -->
+    <!-- =========================
+         FORM
+    ========================== -->
 
     <div class="card">
 
@@ -553,7 +587,7 @@
 
 
 
-      <!-- CUSTOM TEXT -->
+      <!-- QUESTION 3 -->
 
       <div class="question">
 
@@ -582,9 +616,9 @@
 
 
 
-      <!-- =====================
+      <!-- =========================
            RESULT
-      ====================== -->
+      ========================== -->
 
       <div
         class="result"
@@ -611,8 +645,6 @@
         ></div>
 
 
-
-        <!-- COPY / TRY AGAIN -->
 
         <div class="actions">
 
@@ -642,8 +674,6 @@
 
 
 
-        <!-- PLATFORM -->
-
         <div class="platform-title">
 
           Choose where you'd like to continue
@@ -651,10 +681,9 @@
         </div>
 
 
+
         <div class="platform-buttons">
 
-
-          <!-- GOOGLE -->
 
           <a
             class="platform-button google"
@@ -667,9 +696,6 @@
 
           </a>
 
-
-
-          <!-- YELP -->
 
           <a
             class="platform-button yelp"
@@ -692,8 +718,6 @@
     </div>
 
 
-
-    <!-- FOOTNOTE -->
 
     <div class="note">
 
@@ -946,7 +970,7 @@
 
 
     /* =========================
-       EXTRA SENTENCES
+       EXTRA LENGTH
     ========================= */
 
     const extraFillers = [
@@ -992,7 +1016,7 @@
 
 
     /* =========================
-       RANDOM ITEM
+       RANDOM
     ========================= */
 
     function randomItem(array) {
@@ -1024,18 +1048,10 @@
       let parts = [];
 
 
-      /*
-        Opening
-      */
-
       parts.push(
         randomItem(openings)
       );
 
-
-      /*
-        Selected options
-      */
 
       selected.forEach(item => {
 
@@ -1054,20 +1070,12 @@
       });
 
 
-      /*
-        Custom guest comment
-      */
-
       if (custom) {
 
         parts.push(custom);
 
       }
 
-
-      /*
-        Ending
-      */
 
       parts.push(
         randomItem(endings)
@@ -1080,8 +1088,8 @@
 
 
       /*
-        Ensure review is long enough
-        for Yelp
+        Keep review above
+        100 characters.
       */
 
       while (
@@ -1104,7 +1112,7 @@
 
 
     /* =========================
-       GENERATE REVIEW
+       GENERATE
     ========================= */
 
     function generateReview() {
@@ -1116,10 +1124,6 @@
           .value
           .trim();
 
-
-      /*
-        Require at least one input
-      */
 
       if (
         selected.size === 0 &&
@@ -1191,7 +1195,7 @@
 
 
     /* =========================
-       COPY REVIEW
+       COPY
     ========================= */
 
     async function copyReview() {
@@ -1225,7 +1229,6 @@
 
 
       }
-
 
       catch (error) {
 
@@ -1286,4 +1289,5 @@
 
 
 </body>
+
 </html>
